@@ -27,6 +27,8 @@ create table grupe(
 
 );
 
+ovo je dio koji je promjenjen
+
 
 create table polaznici(
 sifra int not null primary key identity(1,1),
@@ -34,7 +36,7 @@ ime varchar(50) not null,
 prezime varchar(50) not null,
 email varchar(100),
 oib char(11),
-brojugovora varchar(10)
+brojugovora (10)
 );
 
 create table predavaci(
