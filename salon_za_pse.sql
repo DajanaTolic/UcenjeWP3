@@ -17,19 +17,19 @@ vlasnik varchar(50) not null
 create table tretmani(
 sifra int not null primary key identity(1,1),
 datum datetime,
-korisnik int
+korisnik int not null
 );
 
 create table stavke(
 sifra int not null primary key identity(1,1),
-tretman int ,
-usluga int ,
-kolicina varchar(50) not null
+tretman int not null,
+usluga int not null,
+kolicina int not null
 );
 
 create table usluge(
 sifra int not null primary key identity(1,1),
-trajanje varchar(50) not null,
+trajanje int not null, -- u minutama
 cijena decimal (18,2),
 naziv varchar(50) not null
 );
@@ -47,23 +47,24 @@ values ('Floki','šnaucer',5,'Matko Boras'),
 ('Oliver','škotski ovčar',8,'Katarina Kneif');
 
 
-insert into tretmani( datum)
-values ('2024-08-07 12:00:00'),
-('2024-08-07 13:00:00'),
-('2024-08-07 15:00:00'),
-('2024-08-07 17:00:00'),
-('2024-08-07 19:00:00');
-
-insert into stavke(kolicina)
-values ('1'),
-('1'),
-('1'),
-('1'),
-('1');
+insert into tretmani(korisnik, datum)
+values (1,'2024-08-07 12:00:00'),
+(1,'2024-08-07 13:00:00'),
+(2,'2024-08-07 15:00:00'),
+(3,'2024-08-07 17:00:00'),
+(3,'2024-08-07 19:00:00');
 
 insert into usluge(trajanje, cijena,naziv)
-values ('1',20,'rezanje noktiju'),
-('2',30,'kupanje'),
-('2',30,'kupanje'),
-('2',25,'šišanje'),
-('2',25,'šišanje');
+values (60,20,'rezanje noktiju'),
+(120,30,'kupanje'),
+(120,30,'kupanje'),
+(120,25,'šišanje');
+
+insert into stavke(tretman,usluga,kolicina)
+values (1,1,1),
+(1,4,1),
+(2,1,1),
+(3,3,2),
+(4,1,1),
+(5,1,1);
+
