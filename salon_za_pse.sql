@@ -10,27 +10,27 @@ create table korisnici(
 sifra int not null primary key identity(1,1),
 ime varchar(50) not null,
 pasmina varchar(50) not null,
-kilaža varchar(50) not null,
+kilaza decimal(18,2),
 vlasnik varchar(50) not null
 );
 
 create table tretmani(
 sifra int not null primary key identity(1,1),
 datum datetime,
-korisnik int
+korisnik int not null
 );
 
 create table stavke(
 sifra int not null primary key identity(1,1),
-tretman int ,
-usluga int ,
-količina varchar(50) not null
+tretman int not null,
+usluga int not null,
+kolicina int not null
 );
 
 create table usluge(
 sifra int not null primary key identity(1,1),
-trajanje varchar(50) not null,
-cijena varchar(50) not null,
+trajanje int not null, -- u minutama
+cijena decimal (18,2),
 naziv varchar(50) not null
 );
 
@@ -39,34 +39,32 @@ alter table stavke add foreign key (tretman) references tretmani(sifra);
 alter table stavke add foreign key (usluga) references usluge(sifra);
 
 
-insert into korisnici (ime,pasmina,kilaža,vlasnik)
-values ('Floki','šnaucer','5kg','Matko Boras'),
-('Bobi','njemačkadoga','20kg','Ivana Janješić'),
-('Zen','hrt','7kg','Bojan Serdar'),
-('Hana','bigl','6kg','Renata Božić'),
-('Oliver','škotski ovčar','8kg','Katarina Kneif');
+insert into korisnici (ime,pasmina,kilaza,vlasnik)
+values ('Floki','šnaucer',5,'Matko Boras'),
+('Bobi','njemačkadoga',20,'Ivana Janješić'),
+('Zen','hrt',7,'Bojan Serdar'),
+('Hana','bigl',6,'Renata Božić'),
+('Oliver','škotski ovčar',8,'Katarina Kneif');
 
 
-insert into tretmani( datum)
-values ('2024-08-07 12:00:00'),
-('2024-08-07 13:00:00'),
-('2024-08-07 15:00:00'),
-('2024-08-07 17:00:00'),
-('2024-08-07 19:00:00');
-
-insert into stavke(količina)
-values ('1'),
-('1'),
-('1'),
-('1'),
-('1');
+insert into tretmani(korisnik, datum)
+values (1,'2024-08-07 12:00:00'),
+(1,'2024-08-07 13:00:00'),
+(2,'2024-08-07 15:00:00'),
+(3,'2024-08-07 17:00:00'),
+(3,'2024-08-07 19:00:00');
 
 insert into usluge(trajanje, cijena,naziv)
-values ('1','20eura','rezanje noktiju'),
-('2','30eura','kupanje'),
-('2','30eura','kupanje'),
-('2','25eura','šišanje'),
-('2','25eura','šišanje');
+values (60,20,'rezanje noktiju'),
+(120,30,'kupanje'),
+(120,30,'kupanje'),
+(120,25,'šišanje');
 
-
+insert into stavke(tretman,usluga,kolicina)
+values (1,1,1),
+(1,4,1),
+(2,1,1),
+(3,3,2),
+(4,1,1),
+(5,1,1);
 
