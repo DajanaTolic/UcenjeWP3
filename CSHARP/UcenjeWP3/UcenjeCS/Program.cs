@@ -1,10 +1,22 @@
 ﻿
 
 using System.Threading.Channels;
+using UcenjeCS;
 
-string Ime;
-Console.WriteLine("Unesi ime: ");
+E10Metode.Izvedi();
+//E09Foreach.Izvedi();
+//E08DoWhile.Izvedi();
+//E07WhilePetlja.Izvedi();
+//Z05.Izvedi();
+//E06ForPetlja.Izvedi();
+//E05Nizovi.Izvedi();
+//Z01s.Izvedi();
 
-Ime = Console.ReadLine();
+//E04UvjetnoGrananjeSwitch.Izvedi();
 
-Console.WriteLine(Ime);
+//E03UvjetnoGrananjeIf.Izvedi();
+
+//E02VarijableTipoviPodatakaOperatori.Izvedi();
+
+
+//E01UlazIzlaz.Izvedi();
